@@ -9,7 +9,7 @@ const setUser = require('./concerns/set-current-user');
 const setModel = require('./concerns/set-mongoose-model');
 
 const index = (req, res, next) => {
-  Tea.find()
+  Tea.find({'_owner':req.user})
     .then(teas => res.json({
       teas: teas.map((e) =>
         e.toJSON({ virtuals: true, user: req.user })),
