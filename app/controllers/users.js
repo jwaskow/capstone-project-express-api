@@ -48,8 +48,8 @@ const signup = (req, res, next) => {
   let credentials = req.body.credentials;
 
   if (credentials.password !== credentials.password_confirmation) {
-    res.status(new Error(400)).json()
-    return
+    res.status(new Error(400)).json();
+    return;
   }
 
   let user = { email: credentials.email, password: credentials.password };
